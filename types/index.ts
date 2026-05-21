@@ -11,9 +11,23 @@ export type RequestStatus =
   | "comprada"
   | "entregada";
 
-export type UrgencyLevel = "baja" | "media" | "alta" | "produccion_parada";
+export type UrgencyLevel =
+  | "baja"
+  | "media"
+  | "alta"
+  | "produccion_parada";
 
-export type QualityLevel = "basica" | "media" | "alta" | "certificada" | "critica";
+export type QualityLevel =
+  | "basica"
+  | "media"
+  | "alta"
+  | "certificada"
+  | "critica";
+
+export type SupplierType =
+  | "mercado_libre"
+  | "proveedor_industrial"
+  | "proveedor_local";
 
 export interface PurchaseRequest {
   id: string;
@@ -36,11 +50,12 @@ export interface PurchaseRequest {
 export interface Supplier {
   id: string;
   name: string;
-  type: "mercado_libre" | "proveedor_industrial" | "proveedor_local";
+  type: SupplierType;
   rating: number;
   isApproved: boolean;
   qualityScore: number;
   deliveryScore: number;
+  averageDeliveryHours: number;
 }
 
 export interface Quotation {
@@ -67,4 +82,14 @@ export interface CatalogItem {
   averageDeliveryHours: number;
   lastPurchaseDate: string;
   isActive: boolean;
+}
+
+export interface ActivityItem {
+  id: string;
+  requestId: string;
+  actor: string;
+  role: UserRole;
+  action: string;
+  description: string;
+  createdAt: string;
 }
