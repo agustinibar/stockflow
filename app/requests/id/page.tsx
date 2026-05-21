@@ -62,7 +62,7 @@ export default function RequestDetailPage({ params }: RequestDetailPageProps) {
         </div>
 
         <div className="space-y-6">
-          <ApprovalActions />
+          <ApprovalActions initialStatus={request.status} />
           <ActivityTimeline activities={activities} />
         </div>
       </div>
